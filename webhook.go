@@ -331,9 +331,12 @@ func ParseGitLab(request *http.Request) (re string) {
 	owner :=projectNameArr[0]
 	projectName := projectNameArr[1]
 	//获取密码
-	pwd, err :=json.Get(`checkout_sha`).String()
-	if err !=nil {
+	pwd :=""
+	if request.Header.Get("X-Gitlab-Token") !="" {
+		pwd =request.Header.Get("X-Gitlab-Token")
+	}else{
 		log.Println("gitlab获取验证码失败"+err.Error())
+		re="获取验证码失败"
 		return
 	}
 	re =hook(owner, projectName, branch, pwd)

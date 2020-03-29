@@ -36,11 +36,21 @@ func init(){
 	loadconffile()
 }
 func usage(){
-	fmt.Fprintf(os.Stderr, `Webhook Vsersion: ebhook/1.0.0 
+	fmt.Fprintf(os.Stderr, `Webhook Vsersion: webhook/1.0.0 
 	Usage: hook [-h] [-s signal] [-p port]
 	Options:
 	`)
 	flag.PrintDefaults()
+	fmt.Fprintf(os.Stderr, `
+	配置文件为conf目录下的所有json文件	
+	格式如下:
+	{
+	"owner":"my", //所属者
+	"branch":"origin",  项目分支
+	"projectName":"testproj",  项目名称
+	"shellpath":"./test.sh",  执行脚本，绝对目录与相对目录均可，相对目录为webhook可执行文件目录为起始
+	"password":"Aa123456"
+	}`+"\n")
 }
 func killHandler(sig os.Signal) error {
 	log.Println("已停止运行")

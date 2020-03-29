@@ -1,5 +1,5 @@
 # webhook
-主要用于gitee和gitlab，gogs及coding未做测试
+主要用于gitee和gitlab，只支持linux，不支持windows，gogs及coding未做测试
 ## 部署说明
 默认端口为7442
 可使用-p 指定端口

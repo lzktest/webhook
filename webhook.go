@@ -207,26 +207,10 @@ func hook(owner string, projectName string,branch string,pwd string) (rest strin
 	i,j :=0,0
 	for _,t := range cfdata{
 			j++
-			i=0
-		if branch != t.branch{
-			rest ="未匹配到分支\n"	
 			i++
-			break
-			}
-		if owner != t.owner{
-			rest ="未匹配到所属者\n"
-			i++
-			break		
-			}
-		if pwd != t.password{
-			rest ="未匹配到项目名称或验证码不正确\n"	
-			i++
-			break	
-			}
-		if projectName != t.projectname{
-			rest ="未匹配到项目名称或验证码不正确\n"	
-			i++
-			break
+		if branch == t.branch && owner == t.owner && pwd == t.password && projectName == t.projectname{
+				i=0
+				break
 			}
 	}
 	if i==0{
